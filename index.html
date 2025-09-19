@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhiram | Web Developer & Digital Marketer</title>
+  <style>
+    /* ===== Reset ===== */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: "Poppins", sans-serif; color:#333; line-height:1.6; background:#f9f9f9;}
+    img {max-width:100%; display:block;}
+    a {text-decoration:none; color:inherit;}
+
+    /* ===== Header ===== */
+    header {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 5%; background:#fff; position:sticky; top:0; z-index:1000;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {font-size:1.5rem; font-weight:700; color:#4CAF50;}
+    nav {display:flex; gap:2rem;}
+    nav a {font-weight:500; transition:0.3s;}
+    nav a:hover {color:#4CAF50;}
+    .menu-btn {display:none; font-size:1.5rem; cursor:pointer;}
+    @media(max-width:768px) {
+      nav {display:none; flex-direction:column; background:#fff; position:absolute; top:60px; right:5%; padding:1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+      nav.active {display:flex;}
+      .menu-btn {display:block;}
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+      padding:0 10%; background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("https://picsum.photos/1600/900") center/cover;
+      color:#fff;
+    }
+    .hero h2 {font-size:clamp(2rem, 5vw, 3.5rem); margin-bottom:1rem;}
+    .hero p {font-size:clamp(1rem, 2vw, 1.3rem); margin-bottom:2rem;}
+    .btn {background:#4CAF50; color:#fff; padding:0.8rem 2rem; border-radius:50px; font-weight:600; transition:0.3s; cursor:pointer; border:none;}
+    .btn:hover {background:#43a047;}
+
+    /* ===== Features ===== */
+    .features {padding:5rem 10%; text-align:center;}
+    .features h2 {margin-bottom:2rem;}
+    .feature-grid {
+      display:grid; gap:1.5rem;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .card {
+      background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition:transform 0.3s;
+    }
+    .card:hover {transform:translateY(-8px);}
+
+    /* ===== About ===== */
+    .about {
+      display:flex; align-items:center; gap:2rem; padding:5rem 10%;
+      flex-wrap:wrap;
+    }
+    .about img {flex:1 1 300px; border-radius:12px;}
+    .about-text {flex:1 1 300px;}
+
+    /* ===== Projects ===== */
+    .projects {padding:5rem 10%; text-align:center;}
+    .project-grid {
+      display:grid; gap:1.5rem;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .project-card {
+      background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      display:flex; flex-direction:column; gap:1rem;
+    }
+    .project-card img {border-radius:8px;}
+    .project-card button {align-self:flex-start;}
+
+    /* ===== Modal ===== */
+    .modal {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center;
+      visibility:hidden; opacity:0; transition:0.3s;
+    }
+    .modal.active {visibility:visible; opacity:1;}
+    .modal-content {
+      background:#fff; padding:2rem; border-radius:12px; max-width:500px; width:90%; position:relative;
+    }
+    .close-btn {
+      position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer;
+    }
+
+    /* ===== Testimonials ===== */
+    .testimonials {padding:5rem 10%; text-align:center;}
+    .testimonial-grid {
+      display:grid; gap:1.5rem;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .testimonial {
+      background:#fff; padding:2rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .testimonial img {width:70px; height:70px; border-radius:50%; margin-bottom:1rem;}
+
+    /* ===== Contact ===== */
+    .contact {padding:5rem 10%; text-align:center;}
+    form {max-width:500px; margin:auto; display:flex; flex-direction:column; gap:1rem;}
+    input, textarea {
+      padding:0.8rem; border:1px solid #ccc; border-radius:8px; font-family:inherit;
+    }
+    button[type="submit"] {
+      padding:0.8rem; border:none; border-radius:8px;
+      background:#4CAF50; color:#fff; font-weight:600; cursor:pointer;
+    }
+    button[type="submit"]:hover {background:#43a047;}
+
+    /* ===== Footer ===== */
+    footer {
+      background:#333; color:#fff; padding:2rem 5%;
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+    }
+    footer p {margin:0;}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Abhiram</h1>
+    <div class="menu-btn">☰</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Hi, I'm Abhiram</h2>
+    <p>Web Developer & Digital Marketer — I build modern, responsive websites and craft digital strategies that grow businesses online.</p>
+    <a href="#contact" class="btn">Work With Me</a>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <h2>What I Do</h2>
+    <div class="feature-grid">
+      <div class="card">💻 Custom Web Development</div>
+      <div class="card">📱 Responsive Design</div>
+      <div class="card">📊 SEO & Analytics</div>
+      <div class="card">📢 Digital Marketing Campaigns</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <img src="https://picsum.photos/600/400?random=5" alt="Abhiram - Web Developer and Digital Marketer">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>I am Abhiram, a Web Developer and Digital Marketer. I specialize in building fast, responsive websites with clean UI/UX and in creating effective digital marketing strategies that boost online visibility and drive engagement.</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="https://picsum.photos/400/250?random=10" alt="">
+        <h3>E-commerce Website</h3>
+        <p>Modern, responsive online store built with HTML, CSS, and JavaScript.</p>
+        <button class="btn" data-project="1">View Details</button>
+      </div>
+      <div class="project-card">
+        <img src="https://picsum.photos/400/250?random=11" alt="">
+        <h3>SEO Campaign</h3>
+        <p>Boosted client’s organic traffic by 120% with a tailored SEO strategy.</p>
+        <button class="btn" data-project="2">View Details</button>
+      </div>
+      <div class="project-card">
+        <img src="https://picsum.photos/400/250?random=12" alt="">
+        <h3>Portfolio Website</h3>
+        <p>A sleek, responsive personal portfolio showcasing web projects.</p>
+        <button class="btn" data-project="3">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modalTitle">Project Title</h3>
+      <p id="modalDesc">Project details will appear here...</p>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Clients Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <img src="https://i.pravatar.cc/70?img=1">
+        <p>"Abhiram built us a stunning website that increased our conversions!"</p>
+        <strong>- Sarah</strong>
+      </div>
+      <div class="testimonial">
+        <img src="https://i.pravatar.cc/70?img=2">
+        <p>"His SEO campaign doubled our traffic in just 3 months."</p>
+        <strong>- John</strong>
+      </div>
+      <div class="testimonial">
+        <img src="https://i.pravatar.cc/70?img=3">
+        <p>"Great experience working with Abhiram — highly recommended."</p>
+        <strong>- Priya</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Get in Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Abhiram. All rights reserved.</p>
+    <div>🌐 Facebook | 📷 Instagram | 💼 LinkedIn</div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Mobile Menu
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Project Modal
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeBtn = document.querySelector('.close-btn');
+
+    const projectDetails = {
+      1: { title: "E-commerce Website", desc: "Built a modern and responsive online store with HTML, CSS, and JavaScript. It includes product pages, cart functionality, and a mobile-first design." },
+      2: { title: "SEO Campaign", desc: "Designed and executed a tailored SEO strategy that increased organic traffic by 120% in 3 months. Implemented keyword optimization, backlinking, and analytics tracking." },
+      3: { title: "Portfolio Website", desc: "Created a professional portfolio website to showcase projects and skills. Fully responsive and optimized for SEO." },
+    };
+
+    document.querySelectorAll('.project-card button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const projectId = btn.getAttribute('data-project');
+        modalTitle.textContent = projectDetails[projectId].title;
+        modalDesc.textContent = projectDetails[projectId].desc;
+        modal.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
