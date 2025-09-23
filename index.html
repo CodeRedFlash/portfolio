@@ -150,6 +150,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     menuBtn.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
+     document.addEventListener('click', (e) => {
+      if (nav.classList.contains('active') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        nav.classList.remove('active');
+      }
+    });
 
     // Project Modal
     const modal = document.getElementById('projectModal');
@@ -184,6 +189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 </body>
 </html>
+
 
 
 
